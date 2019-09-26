@@ -31,12 +31,14 @@ public class Perceptron {
 
             for (int i = 0; i < this.output.length; i++) {
                 float calculatedOutput = calculateOutput(input[i]);
-                float error = Math.abs(output[i] - calculatedOutput); // given error
+                float error = Math.abs(output[i] - calculatedOutput); // given error from train cause we know output
 
                 totalError += error;
 
+                // update weights
                 for (int j = 0; j < numOfWeights; j++) {
-                    weights[j] = weights[j] + learningRate * input[i][j] * error; // equation that we looking for
+                    // equation that we looking for new weight for current input
+                    weights[j] = weights[j] + learningRate * input[i][j] * error;
                     System.out.println("Updated weight: " + weights[j]);
                 }
             }
