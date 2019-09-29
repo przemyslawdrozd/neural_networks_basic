@@ -14,6 +14,7 @@ public class BackpropNeuralNetwork {
         return layers[index];
     }
 
+    // forward process
     public float[] run(float[] input) {
 
         float[] activations = input;
@@ -25,7 +26,8 @@ public class BackpropNeuralNetwork {
         return activations;
     }
 
-    private void train(float[] input, float[] targetOutput, float learningRate, float momentum) {
+    // single training data
+    public void train(float[] input, float[] targetOutput, float learningRate, float momentum) {
 
         float[] calculatedOutput = run(input);
         float[] error = new float[calculatedOutput.length];

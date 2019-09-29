@@ -33,14 +33,16 @@ public class Layer {
 
         System.arraycopy(inputArray, 0, input, 0, inputArray.length);
 
-        input[input.length - 1] = 1;
+        input[input.length - 1] = 1; // set bias
         int offset = 0;
 
         for(int i = 0; i < output.length; i++) {
-            for (int j = 0; j <input.length; j++) {
-                output[i] += weights[offset + j] * input[j];
+
+            for (int j = 0; j < input.length; j++) {
+                output[i] += weights[offset + j] * input[j]; // calculate output
             }
-            output[i] = ActivationFunction.sigmoid(input[i]);
+
+            output[i] = ActivationFunction.sigmoid(output[i]);
             offset += input.length;
         }
 
@@ -67,7 +69,7 @@ public class Layer {
             offset += input.length;
         }
 
-        return  nextError;
+        return nextError;
     }
 }
 
